@@ -36,7 +36,7 @@
             <div class="box-contato">
                 <div class="titulo">DEIXE SUA MENSAGEM</div>
 
-                <form action="#" method="post">
+                <form id="formContato">
                     <div class="item">
                         <input name="" type="text" placeholder="Nome:" data-sr-id="6">
                         <input name="" type="text" placeholder="E-mail:" data-sr-id="7">
@@ -105,5 +105,42 @@
                 </div>
             </div>
         </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- SCRIPT DA REQUISIÇÃO -->
+    <script>
+        $(document).ready(function () {
+
+            $("#formContato").submit(function (e) {
+                e.preventDefault();
+
+                const dados = {
+                    nome: $("input[name='nome']").val(),
+                    email: $("input[name='email']").val(),
+                    telefone: $("input[name='telefone']").val(),
+                    mensagem: $("textarea[name='mensagem']").val()
+                };
+
+                $.ajax({
+                    url: "http://172.26.123.157:1000/api/v1/contato/",
+                    type: "POST",
+                    data: JSON.stringify(dados),
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (response) {
+                        alert("Enviado com sucesso!");
+                        console.log(response);
+                    },
+                    error: function (xhr) {
+                        alert("Erro ao enviar!");
+                        console.log(xhr.responseText);
+                    }
+                });
+
+            });
+
+        });
+    </script>
 </body>
 </html>
