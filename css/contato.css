@@ -1,0 +1,110 @@
+.box-contato {
+    width: 904px;
+    margin: 30px auto;
+    /*
+        gostei mais sei la diferente
+        opacity: 0.6;
+    */
+    transition: all linear 0.8s 0.55s;
+}
+
+.box-contato .titulo {
+    font: 45px 'calibri';
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.box-contato .titulo::first-line {
+    color: #307556;
+}
+
+.box-contato .linha {
+    height: 4px;
+    background: #eee;
+    width: 100%;
+    margin: 20px 0px 0px;
+    position: relative;
+    box-shadow: -1px -1px 2px 0px #fff inset;
+}
+
+.box-contato .item {
+    width: 446px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.box-contato input {
+    width: 100%;
+    padding: 19px 20px;
+    margin-bottom: 10px;
+    border: none;
+    background: #eee;
+    box-sizing: border-box;
+    outline: none !important;
+    font: 18px 'calibri';
+    border-radius: 7px;
+    color: #000;
+}
+
+.box-contato input:focus {
+    box-shadow: 2px 0px 0px 0px #307556 inset;
+    color: #000;
+}
+
+.box-contato textarea {
+    width: 100%;
+    height: 200px;
+    padding: 19px 20px;
+    margin-bottom: 10px;
+    border: none;
+    background: #eee;
+    box-sizing: border-box;
+    outline: none !important;
+    resize: none;
+    font: 18px 'calibri';
+    color: #000;
+}
+
+.box-contato textarea:focus {
+    box-shadow: 2px 0px 0px 0px #307556 inset;
+    color: #000;
+}
+
+.box-contato .submit {
+    width: 100%;
+    padding: 20px 70px;
+    background: #72120B;
+    margin: 0 auto;
+    color: #fff;
+    font: 20px 'calibri';
+    display: table;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.formulario {
+    margin: 40px 0px;
+}
+
+.formulario input {
+    width: 100%;
+    padding: 19px 20px;
+    margin-bottom: 10px;
+    border: none;
+    background: #4d4d4d;
+    box-sizing: border-box;
+    outline: none !important;
+    font: 18px 'calibri';
+}
+
+.formulario textarea {
+    width: 100%;
+    height: 200px;
+    padding: 19px 20px;
+    margin-bottom: 10px;
+    border: none;
+    background: #eee;
+    box-sizing: border-box;
+    resize: none;
+    font: 18px 'calibri';
+}
