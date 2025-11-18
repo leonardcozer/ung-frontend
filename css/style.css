@@ -207,13 +207,25 @@ a {
 
 .rodape-total {
     background: #307556;
+    max-width: 100%;
+}
+
+.logo-pw {
+    display: flex;
+    margin: auto;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .logo-pw div {
     display: flex;
 }
 
-.logo-pw div a span {
+.logo-pw div {
     color: transparent;
 }
 
@@ -221,4 +233,9 @@ a {
     border-top: 1px solid #fff;
     display: flex;
     align-items: center;
+}
+
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
 }
