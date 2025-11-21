@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administrador de Contatos</title>
+    <link rel="stylesheet" href="../css/style_administrador.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+    <div class="menu">
+        <div class="menu-perfil">
+            <img src="https://placehold.co/150x150" alt="Perfil">
+            <h2>Nome do Usuário</h2>
+            <p>Email: usuario@exemplo.com</p>
+        </div>
+        <nav class="menu-vertical">
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="conteudo">
+        <header>
+            <h1>Meu Administrador de Contato</h1>
+        </header>
+
+        <section class="lista-contatos">
+            <h2>Contatos</h2>
+
+            <table id="tabelaContatos" width="100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Mensagem</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script>
+        function editarContato(id) {
+            if (confirm("Deseja excluir o contato ID " + id + "?")) {
+                alert("Contato editado (implementar ALTERAÇÃO)");
+            }
+        }
+
+        function excluirContato(id) {
+            if (confirm("Deseja excluir o contato ID " + id + "?")) {
+                alert("Contato removido (implementar DELETE)");
+            }
+        }
+
+        $(document).ready(function () {
+
+            function carregarContatos() {
+                $.ajax({
+                    url: "http://172.30.0.45:1000/api/v1/contatos/",
+                    type: "GET",
+                    headers: {
+                        "accept": "application/json"
+                    },
+                    success: function (response) {
+
+                        let linhas = "";
+
+                        response.forEach(function(contato) {
+                            linhas += `
+                                <tr>
+                                    <td>${contato.id}</td>
+                                    <td>${contato.nome}</td>
+                                    <td>${contato.email}</td>
+                                    <td>${contato.telefone}</td>
+                                    <td>${contato.mensagem}</td>
+                                    <td style="text-align: center;">
+                                        <i class="fa-solid fa-pen-to-square" 
+                                           style="color:#1e88e5; cursor:pointer; margin-right:10px;"
+                                           onclick="editarContato(${contato.id})"></i>
+
+                                        <i class="fa-solid fa-trash" 
+                                           style="color:#e53935; cursor:pointer;"
+                                           onclick="excluirContato(${contato.id})"></i>
+                                    </td>
+                                </tr>
+                            `;
+                        });
+
+                        $("#tabelaContatos tbody").html(linhas);
+                    },
+                    error: function () {
+                        $("#tabelaContatos tbody").html(`
+                            <tr><td colspan="6">Erro ao carregar contatos.</td></tr>
+                        `);
+                    }
+                });
+            }
+
+            carregarContatos();
+        });
+    </script>
+
+</body>
+</html>

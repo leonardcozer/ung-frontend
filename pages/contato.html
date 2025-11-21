@@ -38,12 +38,12 @@
 
                 <form id="formContato">
                     <div class="item">
-                        <input name="" type="text" placeholder="Nome:" data-sr-id="6">
-                        <input name="" type="text" placeholder="E-mail:" data-sr-id="7">
-                        <input name="" type="text" placeholder="Telefone:" data-sr-id="8">
+                        <input name="nome" type="text" placeholder="Nome:" data-sr-id="6">
+                        <input name="email" type="text" placeholder="E-mail:" data-sr-id="7">
+                        <input name="telefone" type="text" placeholder="Telefone:" data-sr-id="8">
                     </div>
                     <div class="item">
-                        <textarea name="" placeholder="Mensagem:" data-sr-id="9"></textarea>
+                        <textarea name="mensagem" placeholder="Mensagem:" data-sr-id="9"></textarea>
                     </div>
                     <input class="submit" type="submit" value="Enviar" data-sr-id="10" >
                 </form>
@@ -123,14 +123,14 @@
                 };
 
                 $.ajax({
-                    url: "http://172.26.123.157:1000/api/v1/contato/",
+                    url: "http://172.30.0.45:1000/api/v1/contato/",
                     type: "POST",
                     data: JSON.stringify(dados),
                     contentType: "application/json",
                     dataType: "json",
                     success: function (response) {
                         alert("Enviado com sucesso!");
-                        console.log(response);
+                        $("#formContato")[0].reset();
                     },
                     error: function (xhr) {
                         alert("Erro ao enviar!");
